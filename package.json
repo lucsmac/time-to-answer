@@ -1,5 +1,10 @@
 {
   "name": "time-to-answer",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lucsmac/time-to-answer.git",
+  "author": "Lucas Macedo <lucasmdc57@gmail.com>",
+  "license": "MIT"
 }
