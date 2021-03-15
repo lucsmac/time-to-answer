@@ -47,15 +47,17 @@
 
               <!-- Nav Item - Charts -->
               <li class="nav-item">
-                  <a class="nav-link" href="charts.html">
-                      <i class="fas fa-fw fa-chart-area"></i>
-                      <span>Charts</span></a>
+                <%= link_to admins_backoffice_welcome_index_path, class: "nav-link" do %>
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Dashboard</span>
+                <% end %>
               </li>
               
               <li class="nav-item">
-                  <a class="nav-link" href="charts.html">
-                      <i class="fas fa-fw fa-users"></i>
+                <%= link_to admins_backoffice_admin_index_path, class: "nav-link" do %>
+                    <i class="fas fa-fw fa-users"></i>
                       <span>Administradores</span></a>
+                <% end %>
               </li>
 
               <!-- Divider -->
