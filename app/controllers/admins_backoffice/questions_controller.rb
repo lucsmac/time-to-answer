@@ -1,6 +1,7 @@
 class AdminsBackoffice::QuestionsController <
   AdminsBackofficeController
   before_action :set_question, only: [:edit, :update, :destroy]
+  before_action :get_subjects, only: [:new, :edit]
 
   def index
     @questions =
@@ -33,11 +34,11 @@ class AdminsBackoffice::QuestionsController <
 
   def destroy
     if @question.destroy
-    redirect_to admins_backoffice_questions_path, notice: "Questão excluída com sucesso!"
+      redirect_to admins_backoffice_questions_path, notice: "Questão excluída com sucesso!"
     else
-    render :index
+      render :index
+    end
   end
-end
 
 private
 
@@ -47,6 +48,10 @@ private
   
   def set_question
     @question = Question.find(params[:id])
+  end
+
+  def set_subject
+    @subjects = Subject.all
   end
 
 end
