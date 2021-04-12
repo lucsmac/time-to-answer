@@ -63,7 +63,7 @@ namespace :dev do
     Subject.all.each do |subject|
       rand(5..10).times do |i|
         params = create_question_params(subject)
-        answers_array = params[:question][:answer_attributes]
+        answers_array = params[:question][:answers_attributes]
 
         add_answers(answers_array)
         elect_true_answer(answers_array)
@@ -80,7 +80,7 @@ namespace :dev do
       question: {
         description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
         subject: subject,
-        answer_attributes: []
+        answers_attributes: []
       }
     }
   end
