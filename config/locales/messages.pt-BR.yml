@@ -1,0 +1,4 @@
+'pt-BR':
+  messages:
+    listing: Listando
+    confirm_with: Deseja realmente excluir "%{item}"?
