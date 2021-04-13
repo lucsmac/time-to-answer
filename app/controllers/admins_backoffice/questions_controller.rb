@@ -1,7 +1,7 @@
 class AdminsBackoffice::QuestionsController <
   AdminsBackofficeController
   before_action :set_question, only: [:edit, :update, :destroy]
-  before_action :get_subjects, only: [:new, :edit]
+  before_action :set_subjects, only: [:new, :edit]
 
   def index
     @questions = Question.includes(:subject)
@@ -52,7 +52,7 @@ private
     @question = Question.find(params[:id])
   end
 
-  def set_subject
+  def set_subjects
     @subjects = Subject.all
   end
 
