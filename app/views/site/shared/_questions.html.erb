@@ -1,18 +1,49 @@
-<% @questions.each do |question| %>
-  <div class="card mb-4">
-    <div class="card-header">
-      <h5 class="card-title"><%= question.description %></h5>
-    </div>
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <% question.answers.each do |answer| %>
-          <li class="list-group-item">
-            <%= answer.description %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-<% end %>
+<div class="container">
 
-<%= paginate @questions %>
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron" style="background: transparent; padding: 2rem 0; margin-bottom: 0;">
+    <h1>Bem-vindo ao <b>Time to Answer!</b></h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr />
+    <%= form_with(url: site_search_path, local: true, method: :get, class: "form-inline") do |form| %>
+      <%= form.text_field :term, placeholder: "Digite aqui...", class: "form-control mr-sm-2", style: "width: 350px" %>
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
+    <% end %>
+    <br />
+    <% unless params[:term] %>
+      <p>Exibindo todas as perguntas.</p>
+    <% else %>
+      <p><b>Exibindo resultados para "<%= params[:term] %>"</b></p>
+    <% end %>
+  </div>
+
+  <% @questions.each do |question| %>
+    <%= form_with url: site_answer_path, local: true do |form| %>
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="card-title"><%= question.description %></h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <% question.answers.each do |answer| %>
+              <li class="list-group-item">
+                <div class="radio">
+                  <label style="cursor: pointer;">
+                    <%= radio_button_tag 'answer', answer.id, style: "cursor: pointer;" %>
+                    <%= answer.description %>
+                  </label>
+                </div>
+              </li>
+            <% end %>
+            <li class="list-group-item">
+              <br />
+              <%= form.submit "Responder", class: "btn btn-primary", style: "width: 150px;" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= paginate @questions %>
+</div> <!-- /container -->

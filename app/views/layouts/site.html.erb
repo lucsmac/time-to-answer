@@ -65,29 +65,8 @@
         </div>
       </div>
     </nav>
-  
-    <div class="container">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron" style="background: transparent; padding: 2rem 0; margin-bottom: 0;">
-        <h1>Bem-vindo ao <b>Time to Answer!</b></h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr />
-        <%= form_with(url: site_search_path, local: true, method: :get, class: "form-inline") do |form| %>
-          <%= form.text_field :term, placeholder: "Digite aqui...", class: "form-control mr-sm-2", style: "width: 350px" %>
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
-        <% end %>
-        <br />
-        <% unless params[:term] %>
-          <p>Exibindo todas as perguntas.</p>
-        <% else %>
-          <p><b>Exibindo resultados para "<%= params[:term] %>"</b></p>
-        <% end %>
-      </div>
-
-      <%= yield %>
-    </div> <!-- /container -->
-
+    <%= yield %>
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'site' %>
