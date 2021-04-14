@@ -27,7 +27,9 @@
     <!-- Static navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
-        <a class="navbar-brand mr-5" href="#"><b>Time to answer</b></a>
+        <%= link_to root_path, class: "navbar-brand mr-5" do %>
+          <b>Time to Answer</b>
+        <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
