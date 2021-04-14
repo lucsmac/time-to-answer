@@ -23,18 +23,17 @@
   </head>
 
   <body>
-  
-    <div class="container">
 
-      <!-- Static navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Time to answer</a>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand mr-5" href="#"><b>Time to answer</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <%= form_with(url: site_search_path, local: true, method: :get, class: "form-inline") do |form| %>
-            <%= form.text_field :term, placeholder: "Digite aqui...", class: "form-control mr-sm-2" %>
+            <%= form.text_field :term, placeholder: "Digite aqui...", class: "form-control mr-sm-2", style: "width: 350px" %>
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
           <% end %>
           <ul class="navbar-nav ml-auto">
@@ -66,23 +65,16 @@
               <% end %>
           </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
+  
+    <div class="container">
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
+      <div class="jumbotron" style="background: transparent;">
         <h1>Bem-vindo ao <b>Time to Answer!</b></h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
         <hr />
-        <% if user_signed_in? %>
-          <p>O usuário <%= current_user.email %>, está logado </p>
-        <% else %>
-          <p>O usuário não está logado </p>
-        <% end %>
-
-        <% if admin_signed_in? %>
-          <p>O administrador <%= current_admin.email %>, está logado </p>
-        <% else %>
-          <p>O administrador não está logado </p>
-        <% end %>
       </div>
 
       <%= yield %>
