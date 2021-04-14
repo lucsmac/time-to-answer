@@ -50,8 +50,12 @@
                   <%= current_user.email %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <%= link_to users_backoffice_welcome_index_path, class:"dropdown-item" do %>
+                    <i class="fa fa-user fa-fw"></i> Perfil
+                  <% end %>
+                  <div class="dropdown-divider"></div>
                   <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %>
-                    Logout
+                    <i class="fa fa-sign-out fa-fw"></i> Logout
                   <% end %>
                 </div>
               </li>
@@ -69,5 +73,16 @@
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'site' %>
+
+    <% if notice %>
+      <%= javascript_tag do %>
+        $.bootstrapGrowl('<%= notice %>', {
+        type: 'success', // (null, 'info', 'danger', 'success')
+        align: 'right', // ('left', 'right', or 'center')
+        allow_dismiss: true, // If true then will display a cross to close the popup.
+        stackup_spacing: 10 // spacing between consecutively stacked growls.
+        });
+      <% end %>
+    <% end %>
   </body>
 </html>
