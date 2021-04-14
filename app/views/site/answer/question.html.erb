@@ -1,3 +1,25 @@
 <div class="container">
-  <h1>O ID da resposta selecionada é: <%= params[:answer] %></h1>
+  <% if @answer.correct %>
+    <div class="card text-center mt-5" style="width: 100%;">
+      <div class="card-body">
+        <h2 class="card-title">Parabéns, você acertou! \o/</h2>
+        <h3 class="card-text" style="color: green;">"<%= @answer.description %>"</h3>
+        <br />
+        <%= link_to root_path, class: "btn btn-primary" do %>
+          Voltar
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="card text-center mt-5" style="width: 100%;">
+      <div class="card-body">
+        <h2 class="card-title">Infelizmente você errou! :(</h2>
+        <h3 class="card-text" style="color: red;">"<%= @answer.description %>"</h3>
+        <br />
+        <%= link_to root_path, class: "btn btn-primary" do %>
+          Voltar
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
