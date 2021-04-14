@@ -1,14 +1,16 @@
-<h1>Bem-vindo ao Time to Answer!</h1>
-<p>Find me in app/views/site/welcome/index.html.erb</p>
-
-<% if user_signed_in? %>
-  <p>O usuário <%= current_user.email %>, está logado </p>
-<% else %>
-  <p>O usuário não está logado </p>
-<% end %>
-
-<% if admin_signed_in? %>
-  <p>O administrador <%= current_admin.email %>, está logado </p>
-<% else %>
-  <p>O administrador não está logado </p>
+<% @questions.each do |question| %>
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="card-title"><%= question.description %></h5>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <% question.answers.each do |answer| %>
+          <li class="list-group-item">
+            <%= answer.description %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 <% end %>
