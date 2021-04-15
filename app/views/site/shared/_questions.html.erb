@@ -18,8 +18,8 @@
   </div>
 
   <% @questions.each do |question| %>
-    <%= form_with url: site_answer_path, local: true do |form| %>
-      <div class="card mb-4">
+    <%= form_with url: site_answer_path do |form| %>
+      <div class="card mb-4" id="<%= "submit_#{question.id}" %>">
         <div class="card-header">
           <h5 class="card-title"><%= question.description %></h5>
         </div>

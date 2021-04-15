@@ -1,0 +1,33 @@
+(() => {
+  const card = document.querySelector('#submit_<%= @answer.question_id %>')
+  const header = card.querySelector('.card-header')
+  const btn = card.querySelector('.btn[type="submit"]')
+
+  header.classList.remove('bg-danger')
+  header.classList.remove('bg-success')
+  header.classList.remove('text-white')
+
+  btn.classList.remove('btn-default')
+  btn.classList.remove('btn-success')
+  btn.classList.remove('btn-danger')
+
+  if (<%= @answer.correct %>) {
+    header.classList.add('bg-success', 'text-white')
+    btn.classList.add('btn-success')
+    $.bootstrapGrowl('Certa resposta! \\o/', {
+      type: 'success',
+      align: 'right',
+      allow_dismiss: true,
+      stackup_spacing: 10
+    });
+  } else {
+    header.classList.add('bg-danger', 'text-white')
+    btn.classList.add('btn-danger')
+    $.bootstrapGrowl('Resposta errada! :(', {
+      type: 'danger',
+      align: 'right',
+      allow_dismiss: true,
+      stackup_spacing: 10
+    });
+  }
+})()
