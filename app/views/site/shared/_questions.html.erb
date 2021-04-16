@@ -10,18 +10,19 @@
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
     <% end %>
     <br />
-    <% unless params[:term] %>
-      <p>Exibindo todas as perguntas.</p>
-    <% else %>
-      <p><b>Exibindo resultados para "<%= params[:term] %>"</b></p>
-    <% end %>
+    <h4><%= msg_jumbotron %></h4>
   </div>
 
   <% @questions.each do |question| %>
     <%= form_with url: site_answer_path do |form| %>
       <div class="card mb-4" id="<%= "submit_#{question.id}" %>">
         <div class="card-header">
-          <h5 class="card-title"><%= question.description %></h5>
+          <h5 class="card-title">
+            <span class="badge badge-info">
+              <%= link_to question.subject.description, site_search_subject_path(question.subject_id, question.subject.description), style: 'color: #FFF' %>
+            </span>
+            <%= question.description %>
+          </h5>
         </div>
         <div class="card-body">
           <ul class="list-group list-group-flush">
