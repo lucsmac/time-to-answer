@@ -10,27 +10,54 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <br>
+
+        <% if @user.errors.any? %>
+          <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= form_with(url: users_backoffice_profile_path,model: @user, local: true) do |form| %>
         <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
 
           <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required">*</span>
-            </label>
+            <%= form.label :first_name, class: "col-form-label col-md-3 col-sm-3 label-align" %>
             <div class="col-md-6 col-sm-6 ">
-              <input type="text" id="first-name" required="required" class="form-control">
+              <%= form.text_field :first_name, class:"form-control" %>
             </div>
           </div>
+
           <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required">*</span>
-            </label>
+            <%= form.label :last_name, class: "col-form-label col-md-3 col-sm-3 label-align" %>
             <div class="col-md-6 col-sm-6 ">
-              <input type="text" id="last-name" name="last-name" required="required" class="form-control">
+              <%= form.text_field :last_name, class:"form-control" %>
             </div>
           </div>
+
           <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">E-mail</label>
+            <%= form.label :email, class: "col-form-label col-md-3 col-sm-3 label-align" %>
             <div class="col-md-6 col-sm-6 ">
-              <input type="email" id="e-mail" name="e-mail" required="required" class="form-control">
+              <%= form.text_field :email, class:"form-control", readonly: true %>
+            </div>
+          </div>
+
+          <div class="item form-group">
+            <%= form.label :password, class: "col-form-label col-md-3 col-sm-3 label-align" %>
+            <div class="col-md-6 col-sm-6 ">
+              <%= form.password_field :password, class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="item form-group">
+            <%= form.label :password_confirmation, class: "col-form-label col-md-3 col-sm-3 label-align" %>
+            <div class="col-md-6 col-sm-6 ">
+              <%= form.password_field :password_confirmation, class:"form-control" %>
             </div>
           </div>
           
@@ -41,7 +68,7 @@
             </div>
           </div>
 
-        </form>
+        <% end %>
       </div>
     </div>
   </div>
