@@ -23,8 +23,7 @@
           </div>
         <% end %>
 
-        <%= form_with(url: users_backoffice_profile_path,model: @user, local: true) do |form| %>
-        <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+        <%= form_with(url: users_backoffice_profile_path,model: @user, local: true, class: "form-horizontal form-label-left") do |form| %>
 
           <div class="item form-group">
             <%= form.label :first_name, class: "col-form-label col-md-3 col-sm-3 label-align" %>
