@@ -8,6 +8,7 @@ class AdminStatistic < ApplicationRecord
   scope :total_users, -> {
     find_by_event(EVENTS[:total_users]).value
   }
+  
   scope :total_questions, -> {
     find_by_event(EVENTS[:total_questions]).value
   }
